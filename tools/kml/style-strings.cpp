@@ -115,7 +115,6 @@ namespace kml {
      * Make sure in the first call to set 'isRefreshStaticData' true
      * for prevent unexpected no 'kmlNode' error.
      */
-
     static xml::Node *kmlNode = nullptr;
     static std::vector<xml::Node*> styleMapNodeVec, styleNodeVec;
 
@@ -132,7 +131,8 @@ namespace kml {
     }
 
     if (!kmlNode) {
-      std::cerr << "KML-> Style strings error. No 'kml' root node as container\n"
+      std::cerr
+        << "KML-> Style strings error. No 'kml' root node as container\n"
         << "      for 'StyleMap' and 'Style' nodes\n";
       return "";
     }
@@ -149,10 +149,10 @@ namespace kml {
 
       for (auto &styleMapNode : styleMapNodeVec) {
         for (auto &att1 : *styleMapNode->getAttributes()) {
-            
+
           if (att1.getName() == "id" && att1.getValue() == styleName) {
 
-            /* search only for normal style */
+            /** Search only for normal style */
 
             std::string normalPairStyleName = (
               styleMapNode
